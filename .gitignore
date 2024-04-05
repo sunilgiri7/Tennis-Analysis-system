@@ -1,4 +1,3 @@
 Training/tennis-ball-detection-6/
 models/
 yolov8x.pt
-input_videos/
