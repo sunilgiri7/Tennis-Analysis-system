@@ -134,6 +134,7 @@ class MiniCourt():
         out[mask] = cv2.addWeighted(frame, alpha, shapes, 1-alpha, 0)[mask]
         return out
 
+
     def draw_mini_court(self, frames):
         # Draw mini court on each frame
         output_frames = []
@@ -223,3 +224,12 @@ class MiniCourt():
                     output_ball_boxes.append({1: min_court_player_position})
             output_player_boxes.append(output_player_bbox_dict)
         return output_player_boxes, output_ball_boxes
+
+    def draw_points_on_mini_court(self, frames, positions, color=(0,255,0)):
+        for frame_num, frame in enumerate(frames):
+            for _, position in positions[frame_num].items():
+                x, y = position
+                x = int(x)
+                y = int(y)
+                cv2.circle(frame, (x,y), 5, color, -1)
+        return frames
